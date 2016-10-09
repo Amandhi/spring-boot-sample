@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Microservices | TP1</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Architectures microservices TP1</h2>
+					<h4>Efrei - octobre 2016</h4>
+					<p>
+						<small>Clément Stoquart</small>
+					</p>
+				</section>
+				<section>
+					<h2>Qui suis-je ?</h2>
+					<img class="plain" data-src="images/logo-efrei.png" height="100px" alt="logo_efrei"/>
+					<p>promo 2013</p>
+					<br>
+					<img class="plain" data-src="images/ekino-logo.png" alt="logo_ekino"/>
+					<p>Ingénieur Java</p>
+				</section>
+				<section>
+					<h2>6 séances</h2>
+					<ol>
+						<li>TP : Concepts de base, outils, un premier microservice</li>
+						<li>TP : Des microservices + registry</li>
+						<li>CM : les architectures microservice en détail</li>
+						<li>CM : (idem)</li>
+						<li>TP : load balancing + circuit breaker</li>
+						<li>TP : Déploiement cloud, Docker,...</li>
+					</ol>
+				</section>
+				<section>
+					<img class="plain" data-src="images/java-logo.jpg" alt="logo_java"/>
+				</section>
+				<section>
+					<h2>TP 1</h2>
+					<ol>
+						<li>Concepts</li>
+						<li>Ecosystème logiciel</li>
+						<li>Outils</li>
+						<li>TP</li>
+					</ol>
+				</section>
+				<section>
+					<p>Google, Amazon, Netflix,...</p>
+					<img class="plain" data-src="images/meme1.jpg" alt="microservices_everywhere"/>
+				</section>
+				<section>
+					<h2>Définition</h2>
+					<blockquote cite="http://www.martinfowler.com/articles/microservices.html">
+						In short, the microservice architectural style is an approach to developing a
+						 single application as a suite of small services, each running in its own process
+						 and communicating with lightweight mechanisms, often an HTTP resource API. (...)
+					</blockquote>
+					<cite>James Lewis et Martin Fowler</cite>
+				</section>
+				<section>
+					<h2>1. Concepts</h2>
+				</section>
+				<section>
+					<h2>Concepts</h2>
+					<ul>
+						<li>1 microservice = <strong>1 domaine fonctionnel</strong></li>
+						<li class="fragment fade-up"><strong>Processus indépendant</strong></li>
+						<li class="fragment fade-up"><strong>Couplage faible</strong> : REST, messaging,...</li>
+						<li class="fragment fade-up"><strong>Déploiements simples et rapides</strong> : automatisés, continus</li>
+					</ul>
+				</section>
+				<section>
+					<h2>2. Ecosystème logiciel</h2>
+				</section>
+				<section>
+					<h2>Spring Boot</h2>
+					<p>Microservice-ready framework</p>
+					<img class="plain" data-src="images/spring-boot-logo.png" alt="logo_spring_boot"/>
+				</section>
+				<section>
+					<h2>Spring Boot</h2>
+					<ul>
+						<li>Efficace : configuration automatique via annotations</li>
+						<li class="fragment fade-up">Déploiement simple : Jar avec serveur d'app <strong>embarqué</strong> et <strong>configuré</strong>)</li>
+						<li class="fragment fade-up">Cloud-ready : Amazon Web Services, Pivotal,...</li>
+						<li class="fragment fade-up">Pas de configuration XML !</li>
+						<li class="fragment fade-up">Documentation de qualité</li>
+					</ul>
+				</section>
+				<section>
+					<pre><code data-trim>
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+    			</code></pre>
+				</section>
+				<section>
+					<img class="plain" data-src="images/netflix_oss.png" height="200px" alt="logo_efrei"/>
+					<ul>
+						<li class="fragment fade-up"><strong>Eureka</strong> : service discovery</li>
+						<li class="fragment fade-up"><strong>Hystrix</strong> : circuit breaker</li>
+						<li class="fragment fade-up"><strong>Ribbon</strong> : load balancing</li>
+						<li class="fragment fade-up">Feign, Zuul,...</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Spring Cloud Netflix</h2>
+					<img class="plain" data-src="images/spring-cloud.png" alt="logo_cloud_netflix"/>
+					<p>Configuration par défaut = prod Netflix</p>
+				</section>
+				<section data-background="images/happy.gif">
+					<h2 style="color: white;">Open source et gratuit</h2>
+				</section>
+				<section>
+					<h2>3. Outils</h2>
+				</section>
+				<section>
+					<h2>IntelliJ IDEA</h2>
+					<img class="plain" height="500px" data-src="images/intellij.png" alt="logo_java"/>
+				</section>
+				<section>
+					<h2>Gradle</h2>
+					<ul>
+						<li>Gestion des dépendances</li>
+						<li>Build</li>
+					</ul>
+				</section>
+				<section>
+					<h2>4. TP</h2>
+				</section>
+				<section>
+					<img class="stretch" src="images/architecture-tp.png" alt="architecture_tp"/>
+				</section>
+				<section>
+					<img class="stretch" src="images/martine.jpg" alt="martine"/>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+			Reveal.configure({ slideNumber: 'c/t' });
+		</script>
+	</body>
+</html>
