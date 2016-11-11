@@ -6,10 +6,7 @@ import com.efrei.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -45,6 +42,27 @@ public class MoviesService {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping
+    public ResponseEntity createMovie(@RequestBody Movie movie) {
+        movieRepository.save(movie);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity updateMovie(@RequestBody Movie movie) {
+        movieRepository.save(movie);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteMovie(@PathVariable Long id) {
+        movieRepository.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/init")

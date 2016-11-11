@@ -7,4 +7,7 @@ spring:
   h2:
     console:
       enabled: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
 
